@@ -1,0 +1,49 @@
+{
+    "create": {
+        "name": "Brent Hardy",
+        "email": "ojkiwfov@hafaga.dz",
+        "age": 22,
+        "weight": 190.70,
+        "feet_tall": 1.60
+    },
+
+    "duplicate": {
+        "name": "Peter Harmon",
+        "email": "gu@zuf.la",
+        "age": 23,
+        "weight": 161.5,
+        "feet_tall": 1.54
+    },
+    
+    "remove": {
+        "name": "Leah Copeland",
+        "email": "awawen@zujizgun.so",
+        "age": 28,
+        "weight": 188.60,
+        "feet_tall": 1.81
+    },
+
+    "invalid_age": {
+        "name": "Verna Norman",
+        "email": "seom@foka.np",
+        "age": "10",
+        "weight": "78",
+        "feet_tall": "1.87"
+    },
+
+    "invalid_weight": {
+        "name": "Lina Fields",
+        "email": "nitkebag@tafibtu.kz",
+        "age": "30",
+        "weight": "0",
+        "feet_tall": "1.87"
+    },
+
+    "invalid_feet_tall": {
+        "name": "Craig Spencer",
+        "email": "gibhokzir@dutrambi.ss",
+        "age": "56",
+        "weight": "87",
+        "feet_tall": "0"
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "healthxp-web-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Rener Pires",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^12.17.1"
+  },
+  "dependencies": {
+    "pg": "^8.11.1"
+  }
+}

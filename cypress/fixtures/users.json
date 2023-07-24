@@ -1,0 +1,55 @@
+{
+  "admin": {
+    "name": "Admin",
+    "email": "admin@healthxp.com",
+    "password": "xperience"
+  },
+  "invalid_user_credentials": {
+    "email": "admin@healthxp.com",
+    "password": "experience"
+  },
+  "not_found_user_credentials": {
+    "email": "404@teste.com",
+    "password": "notFound"
+  },
+  "list_invalid_email_credentials": [
+    {
+      "category": "invalido",
+      "email": "invalid&teste.com",
+      "password": "invalid"
+    },
+    {
+      "category": "website",
+      "email": "www.teste.com",
+      "password": "invalid"
+    },
+    {
+      "category": "caracteres especiais",
+      "email": "&%!#@%$#!@%$!#@!%$@#",
+      "password": "invalid"
+    },
+    {
+      "category": "alfanumérico",
+      "email": "g87h6fg876h5fsg87h6fg",
+      "password": "invalid"
+    },
+    {
+      "category": "letras",
+      "email": "sdfhsftdhrsdfhrts",
+      "password": "invalid"
+    },
+    {
+      "category": "espaços",
+      "email": "               @teste.com",
+      "password": "invalid"
+    }
+  ],
+  "empty_email_credentials": {
+    "email": "",
+    "password": "emptyEmail"
+  },
+  "empty_password_credentials": {
+    "email": "empty@password.com",
+    "password": ""
+  }
+}
