@@ -45,5 +45,34 @@
         "age": "56",
         "weight": "87",
         "feet_tall": "0"
+    },
+
+    "invalid_fields_custom_rules": {
+        "age": [
+            {
+                "field_label": "Idade",
+                "category": "Idade menor ou igual a zero",
+                "values": ["0", "-16"],
+                "expected_message": "A idade mínima para treinar é 16 anos!"
+            }
+        ],
+
+        "weight": [
+            {
+                "field_label": "Peso (em kg)",
+                "category": "Peso menor ou igual a zero",
+                "values": ["0", "-60"],
+                "expected_message": "O peso deve ser maior que 0"
+            }
+        ],
+
+        "feet_tall": [
+            {
+                "field_label": "Altura",
+                "category": "Altura menor ou igual a zero",
+                "values": ["0", "-180"],
+                "expected_message": "A altura deve ser maior que 0"
+            }
+        ]
     }
 }

@@ -89,6 +89,10 @@ describe('Tela de Estudantes', () => {
      * - Tentar cadastrar um aluno menor de 16 anos (deve passar)
      * - Tentar cadastrar informando peso incorreto (deve falhar)
      * - Tentar cadastrar informando altura incorreta (deve falhar)
+    
+     * DISCLAIMER: Optei por fazer de duas formas, uma considerando as
+     * variações dos campos e mensagens de erro esperadas e outra
+     * considerando cada um dos cenários individualmente.
     */
 
 
@@ -136,5 +140,51 @@ describe('Tela de Estudantes', () => {
         studentsPage.submitForm()
 
         studentsPage.fieldValidationMessage('Altura').should('have.text', EXPECTED_MESSAGE)
+    })
+
+    //Implementação com todas as variações das regras de negócio (a little over, but it's fine 😅)
+    it('Regras de negócio customizadas (com variações)', () => {
+        const STUDENT_DATA_FIELDS_VARIATION = students.invalid_fields_custom_rules
+
+        studentsPage.gotoRegisterPage()
+
+        const ERROR_RESULTS = []
+
+        // Para cada um dos campos
+        Object.keys(STUDENT_DATA_FIELDS_VARIATION).forEach(key => {
+
+            // Realiza a variação das regras de negócio
+            STUDENT_DATA_FIELDS_VARIATION[key].forEach(fieldValidation => {
+                let {values, field_label, expected_message, category} = fieldValidation
+
+                // Varia os valores aplicáveis para àquela regra de negócio
+                values.forEach(value => {
+                    //Preenche apenas campo com o valor
+                    studentsPage.fillForm({[key] : `${value}`})
+                    //Tenta fazer o submit
+                    studentsPage.submitForm()
+                    //Valida se a mensagem de erro é igual a esperada
+                    cy.contains('label', field_label)
+                    .siblings()
+                    .invoke('text').then(
+                        RETRIEVED_MESSAGE => {
+                            if (expected_message != RETRIEVED_MESSAGE) {
+                                cy.log(`🔴 **FAIL**: campo ${field_label}\n
+                                        ***expected***: ${expected_message}\n
+                                        ***received***: ${RETRIEVED_MESSAGE}`)
+    
+                                cy.screenshot(`test custom business rule - category ${category} - value ${value}`)
+                                ERROR_RESULTS.push(`${field_label} - ${value}`)
+                            } else {
+                                cy.log(`🟢 **SUCCESS**: campo ${field_label}`)
+                            }
+                        }
+                    )
+                })
+            })
+        })
+
+        // O array de erros finais deve ser vazio
+        cy.wrap(ERROR_RESULTS).should('be.empty')
     })
 })
